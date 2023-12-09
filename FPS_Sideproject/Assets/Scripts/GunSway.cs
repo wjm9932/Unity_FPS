@@ -4,33 +4,59 @@ using UnityEngine;
 
 public class GunSway : MonoBehaviour
 {
-    public float intensity;
-    public float smooth;
+    [Header("Sway")]
+    public float amount = 0.02f;
+    public float maxAmount = 0.06f;
+    public float smooth = 6f;
+
+    [Header("Tilt")]
+    public float rotationAmount = 4f;
+    public float maxRotationAmount = 5f;
+    public float smoothRotation = 12f;
+
+    [Space]
+    public bool rotationX = true; 
+    public bool rotationY = true;
+    public bool rotationZ = true;
 
     private Quaternion originRotation;
+    private Vector3 originPosition;
+    private float xMouse;
+    private float yMouse;
     // Start is called before the first frame update
     void Start()
     {
         originRotation = transform.localRotation;
+        originPosition = transform.localPosition;
     }
 
     // Update is called once per frame
     void Update()
     {
+        GetMouseValue();
         UpdateSway();
+        UpdateTiltSway();
     }
 
+    private void GetMouseValue()
+    {
+        xMouse = -Input.GetAxis("Mouse X");
+        yMouse = -Input.GetAxis("Mouse Y");
+    }
     private void UpdateSway()
     {
-        float txMouse = Input.GetAxis("Mouse X");
-        float tyMouse = Input.GetAxis("Mouse Y");
+        float moveX = Mathf.Clamp(xMouse * amount, -maxAmount, maxAmount);
+        float moveY = Mathf.Clamp(yMouse * amount, -maxAmount, maxAmount);
 
-        //calculate target rotation
-        Quaternion target_X_Adjustment = Quaternion.AngleAxis(-intensity * txMouse, Vector3.up);
-        Quaternion target_Y_Adjustment = Quaternion.AngleAxis(intensity * tyMouse, Vector3.right);
-        Quaternion targetRotation = originRotation * target_X_Adjustment * target_Y_Adjustment;
+        Vector3 finalPosition = new Vector3(moveX, moveY, 0);
+        transform.localPosition = Vector3.Lerp(transform.localPosition, finalPosition + originPosition, Time.deltaTime * smooth);
+    }
+    private void UpdateTiltSway()
+    {
+        float tiltX = Mathf.Clamp(xMouse * rotationAmount, -maxRotationAmount, maxRotationAmount);
+        float tiltY = Mathf.Clamp(yMouse * rotationAmount, -maxRotationAmount, maxRotationAmount);
 
-        //rotate toward target rotation;
-        transform.localRotation = Quaternion.Lerp(transform.localRotation, targetRotation, Time.deltaTime * smooth);
+        Quaternion targetRotation = Quaternion.Euler(new Vector3(rotationX ? -tiltY: 0f, rotationY? tiltX : 0f, rotationZ? tiltX : 0f));
+        transform.localRotation = Quaternion.Lerp(transform.localRotation, originRotation * targetRotation, Time.deltaTime * smoothRotation);
     }
 }
