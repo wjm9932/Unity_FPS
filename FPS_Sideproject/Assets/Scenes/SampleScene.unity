@@ -363,14 +363,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ae1d1fb5e018fc45acaba181e5ba67d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controller: {fileID: 790513417}
+  input: {fileID: 790513421}
   amount: 0.1
   maxAmount: 0.2
-  smooth: 10
-  rotationAmount: 15
-  maxRotationAmount: 15
-  smoothRotation: 10
+  smooth: 8
+  rotationAmount: 12
+  maxRotationAmount: 12
+  smoothRotation: 8
+  speedCurve: 0
+  travelLimit: {x: 0.1, y: 0.01, z: 0.1}
+  bobLimit: {x: 0.02, y: 0.02, z: 0.01}
+  bobAmount: {x: 2.5, y: 2, z: 2}
   rotationX: 1
-  rotationY: 1
+  rotationY: 0
   rotationZ: 1
 --- !u!1 &417644536
 GameObject:
@@ -725,7 +731,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ca4182686824924ca9257d4b95d6fd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 3
+  Speed: 10
   gravity: -9.81
   groundCheck: {fileID: 544258450}
   groundDistance: 0.4
