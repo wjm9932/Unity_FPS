@@ -79,11 +79,11 @@ public class GunSway : MonoBehaviour
     {
         if(input.moveInput != Vector2.zero)
         {
-            speedCurve += Time.deltaTime * (controller.isGrounded ? 10f : 1f) + 0.01f;
+            speedCurve += Time.deltaTime * (controller.isGrounded ? 10f : 1f);
         }
         else
         {
-            speedCurve += Time.deltaTime * (controller.isGrounded ? 0.1f : 1f) + 0.01f;
+            speedCurve += Time.deltaTime * (controller.isGrounded ? 1.5f : 1f);
         }
         bobPosition.x = (curveCos * bobLimit.x * (controller.isGrounded ? 1 : 0)) - (input.moveInput.x * travelLimit.x);
         bobPosition.y = (curveSin * bobLimit.y) - (controller.velocity.y * travelLimit.y);
