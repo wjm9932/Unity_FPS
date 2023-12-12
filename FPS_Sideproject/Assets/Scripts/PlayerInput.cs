@@ -5,8 +5,9 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour
 {
     public Vector2 moveInput { get; private set; }
-    public bool isJump { get; private set; }
-    public bool isFire { get; private set; }
+    public bool isJumping { get; private set; }
+    public bool isFiring { get; private set; }
+    public bool isAiming { get; private set; }
     //public bool isReload { get; private set; }
 
     // Update is called once per frame
@@ -23,8 +24,9 @@ public class PlayerInput : MonoBehaviour
         {
             moveInput = moveInput.normalized;
         }
-        isJump = Input.GetButtonDown("Jump");
-        isFire = Input.GetButton("Fire1");
+        isJumping = Input.GetButtonDown("Jump");
+        isFiring = Input.GetButton("Fire1");
+        isAiming = Input.GetButton("Fire2");
         //isReload = Input.GetButtonDown("Reload");
     }
 }

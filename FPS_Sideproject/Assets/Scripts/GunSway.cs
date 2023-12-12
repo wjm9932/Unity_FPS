@@ -18,6 +18,8 @@ public class GunSway : MonoBehaviour
 
     [Header("Bobbing")]
     public float speedCurve;
+    public float bobbingSpeedForWalking = 10f;
+    public float bobbingSpeedForStanding = 1.5f;
     public Vector3 travelLimit = Vector3.one * 0.025f;
     public Vector3 bobLimit = Vector3.one * 0.01f;
     private float curveSin { get => Mathf.Sin(speedCurve); }
@@ -79,11 +81,11 @@ public class GunSway : MonoBehaviour
     {
         if(input.moveInput != Vector2.zero)
         {
-            speedCurve += Time.deltaTime * (controller.isGrounded ? 10f : 1f);
+            speedCurve += Time.deltaTime * (controller.isGrounded ? bobbingSpeedForWalking : 1f);
         }
         else
         {
-            speedCurve += Time.deltaTime * (controller.isGrounded ? 1.5f : 1f);
+            speedCurve += Time.deltaTime * (controller.isGrounded ? bobbingSpeedForStanding : 1f);
         }
         bobPosition.x = (curveCos * bobLimit.x * (controller.isGrounded ? 1 : 0)) - (input.moveInput.x * travelLimit.x);
         bobPosition.y = (curveSin * bobLimit.y) - (controller.velocity.y * travelLimit.y);

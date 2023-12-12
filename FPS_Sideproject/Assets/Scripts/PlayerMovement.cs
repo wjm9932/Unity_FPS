@@ -41,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 moveDir = transform.forward * input.moveInput.y + transform.right * input.moveInput.x;   
         playerController.Move(moveDir * Speed * Time.deltaTime);
 
-        if(input.isJump == true && isGrounded == true)
+        if(input.isJumping == true && isGrounded == true)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
