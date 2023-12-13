@@ -9,7 +9,7 @@ public class Weapon_M4 : MonoBehaviour
     private int bulletSLeft, bulletsShot;
     private bool isShooting, isReadyToShoot, isReloading;
     private PlayerInput input;
-    private Recoil recoil;
+    public Recoil recoil;
 
     //temp
     public GameObject temp;
@@ -22,7 +22,6 @@ public class Weapon_M4 : MonoBehaviour
     void Start()
     {
         input = transform.root.gameObject.GetComponent<PlayerInput>();
-        recoil = GetComponent<Recoil>();
 
         bulletSLeft = magazineSize;
         isReadyToShoot = true;
