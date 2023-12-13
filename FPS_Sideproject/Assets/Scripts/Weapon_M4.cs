@@ -9,7 +9,9 @@ public class Weapon_M4 : MonoBehaviour
     private int bulletSLeft, bulletsShot;
     private bool isShooting, isReadyToShoot, isReloading;
     private PlayerInput input;
+    private Recoil recoil;
 
+    //temp
     public GameObject temp;
 
     public Camera cam;
@@ -19,9 +21,11 @@ public class Weapon_M4 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        input = transform.root.gameObject.GetComponent<PlayerInput>();
+        recoil = GetComponent<Recoil>();
+
         bulletSLeft = magazineSize;
         isReadyToShoot = true;
-        input = transform.root.gameObject.GetComponent<PlayerInput>();
     }
 
     // Update is called once per frame
@@ -39,7 +43,7 @@ public class Weapon_M4 : MonoBehaviour
     private void Reload()
     {
         isReloading = true;
-        Invoke("reloadFinished", reloadTime);
+        Invoke("ReloadFinished", reloadTime);
     }
     private void ReloadFinished()
     {
@@ -49,15 +53,16 @@ public class Weapon_M4 : MonoBehaviour
     private void Shoot()
     {
         isReadyToShoot = false;
+        --bulletSLeft;
 
         if(Physics.Raycast(cam.transform.position, cam.transform.forward, out rayHit, range, whatIsEnemy) == true)
         {
             Debug.Log(rayHit.collider.name);
         }
 
+        recoil.RecoilFire();
+        
         Instantiate(temp, rayHit.point, Quaternion.identity);
-
-        --bulletSLeft;
         Invoke("ResetShot", timeBetweenShooting);
     }
     private void ResetShot()
