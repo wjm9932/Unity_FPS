@@ -75,33 +75,7 @@ public class GunSway : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (input.isAiming == true)
-        {
-            swayAmount = aimSwayAmount;
-            swayMaxAmount = aimSwayMaxAmount;
-
-            tiltAmount = aimTiltAmount;
-            tiltMaxAmount = aimTiltAmount;
-
-            travelLimit = aimTravelLimit;
-            bobLimit = aimBobLimit;
-
-            bobAmount = aimBobAmount;
-        }
-        else
-        {
-            swayAmount = idleSwayAmount;
-            swayMaxAmount = idleSwayMaxAmount;
-
-
-            tiltAmount = idleTiltAmount;
-            tiltMaxAmount = idleTiltAmount;
-
-            travelLimit = idleTravelLimit;
-            bobLimit = idleBobLimit;
-
-            bobAmount = idleBobAmount;
-        }
+        SetValue();
 
         GetMouseValue();
         GetBobOffest();
@@ -143,8 +117,8 @@ public class GunSway : MonoBehaviour
             speedCurve += Time.deltaTime * (controller.isGrounded ? bobbingSpeedForStanding : 1f);
         }
 
-        bobPosition.x = (curveCos * bobLimit.x * (controller.isGrounded ? 1 : 0))/* - (input.moveInput.x * travelLimit.x)*/;
-        bobPosition.y = (curveSin * bobLimit.y)/* - (controller.velocity.y * travelLimit.y)*/;
+        bobPosition.x = (curveCos * bobLimit.x * (controller.isGrounded ? 1 : 0))- (input.moveInput.x * travelLimit.x);
+        bobPosition.y = (curveSin * bobLimit.y) - (controller.velocity.y * travelLimit.y);
         bobPosition.z = -(input.moveInput.y * travelLimit.z);
     }
 
@@ -153,6 +127,36 @@ public class GunSway : MonoBehaviour
         bobRotation.x = (input.moveInput != Vector2.zero ? bobAmount.x * (Mathf.Sin(2 * speedCurve)) : bobAmount.x * (Mathf.Sin(2 * speedCurve) /5));
         bobRotation.y = (input.moveInput != Vector2.zero ? bobAmount.y * curveCos : 0);
         bobRotation.z = (input.moveInput != Vector2.zero ? bobAmount.z * curveCos * input.moveInput.x : 0);
-        Debug.Log(bobRotation.z);
+    }
+
+    private void SetValue()
+    {
+        if (input.isAiming == true)
+        {
+            swayAmount = aimSwayAmount;
+            swayMaxAmount = aimSwayMaxAmount;
+
+            tiltAmount = aimTiltAmount;
+            tiltMaxAmount = aimTiltAmount;
+
+            travelLimit = aimTravelLimit;
+            bobLimit = aimBobLimit;
+
+            bobAmount = aimBobAmount;
+        }
+        else
+        {
+            swayAmount = idleSwayAmount;
+            swayMaxAmount = idleSwayMaxAmount;
+
+
+            tiltAmount = idleTiltAmount;
+            tiltMaxAmount = idleTiltAmount;
+
+            travelLimit = idleTravelLimit;
+            bobLimit = idleBobLimit;
+
+            bobAmount = idleBobAmount;
+        }
     }
 }

@@ -8,6 +8,7 @@ public class PlayerInput : MonoBehaviour
     public bool isJumping { get; private set; }
     public bool isFiring { get; private set; }
     public bool isAiming { get; private set; }
+    public bool isReload { get; private set; }
     //public bool isReload { get; private set; }
 
     // Update is called once per frame
@@ -27,6 +28,6 @@ public class PlayerInput : MonoBehaviour
         isJumping = Input.GetButtonDown("Jump");
         isFiring = Input.GetButton("Fire1");
         isAiming = Input.GetButton("Fire2");
-        //isReload = Input.GetButtonDown("Reload");
+        isReload = Input.GetButtonDown("Reload");
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Weapon : MonoBehaviour
+public class AimOnSight : MonoBehaviour
 {
     [Header("Aimmig")]
     public Vector3 aimPosition;
