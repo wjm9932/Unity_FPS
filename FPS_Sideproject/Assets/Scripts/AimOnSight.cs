@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class AimOnSight : MonoBehaviour
 {
+    public Transform weaponPosition;
+
     [Header("Aimmig")]
     public Vector3 aimPosition;
     public float adsSpeed = 8f;
@@ -15,7 +17,7 @@ public class AimOnSight : MonoBehaviour
     {
         input = transform.root.gameObject.GetComponent<PlayerInput>();
 
-        originalPosition = transform.localPosition;
+        originalPosition = weaponPosition.localPosition;
     }
 
     // Update is called once per frame
@@ -28,11 +30,11 @@ public class AimOnSight : MonoBehaviour
     {
         if(input.isAiming == true)
         {
-            transform.localPosition = Vector3.Lerp(transform.localPosition, aimPosition, Time.deltaTime * adsSpeed);
+            weaponPosition.localPosition = Vector3.Lerp(weaponPosition.localPosition, aimPosition, Time.deltaTime * adsSpeed);
         }
         else
         {
-            transform.localPosition = Vector3.Lerp(transform.localPosition, originalPosition, Time.deltaTime * adsSpeed);
+            weaponPosition.localPosition = Vector3.Lerp(weaponPosition.localPosition, originalPosition, Time.deltaTime * adsSpeed);
         }
     }
 }

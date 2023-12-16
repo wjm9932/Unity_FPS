@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour
 {
     public Vector2 moveInput { get; private set; }
+    public Vector2 mouseInput { get; private set; }
     public bool isJumping { get; private set; }
     public bool isFiring { get; private set; }
     public bool isAiming { get; private set; }
@@ -20,7 +21,8 @@ public class PlayerInput : MonoBehaviour
         }
 
         moveInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-
+        mouseInput = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+                                 
         if (moveInput.sqrMagnitude > 1f)
         {
             moveInput = moveInput.normalized;
