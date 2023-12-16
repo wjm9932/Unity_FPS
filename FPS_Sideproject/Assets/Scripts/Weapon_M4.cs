@@ -10,6 +10,7 @@ public class Weapon_M4 : MonoBehaviour
     private bool isShooting, isReadyToShoot, isReloading;
     private PlayerInput input;
     private Recoil recoil;
+    private AdvancedWeaponRecoil advancedWeaponRecoil;
 
     //temp
     public GameObject temp;
@@ -23,6 +24,7 @@ public class Weapon_M4 : MonoBehaviour
     {
         input = transform.root.gameObject.GetComponent<PlayerInput>();
         recoil = GetComponent<Recoil>();
+        advancedWeaponRecoil = GetComponent<AdvancedWeaponRecoil>();
 
         bulletSLeft = magazineSize;
         isReadyToShoot = true;
@@ -57,11 +59,11 @@ public class Weapon_M4 : MonoBehaviour
 
         if(Physics.Raycast(cam.transform.position, cam.transform.forward, out rayHit, range, whatIsEnemy) == true)
         {
-            Debug.Log(rayHit.collider.name);
         }
 
-        recoil.RecoilFire();
-        
+        recoil.FireCameraRecoil();
+        advancedWeaponRecoil.FireWeaponRecoil();
+
         Instantiate(temp, rayHit.point, Quaternion.identity);
         Invoke("ResetShot", timeBetweenShooting);
     }

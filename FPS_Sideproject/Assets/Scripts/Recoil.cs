@@ -22,7 +22,7 @@ public class Recoil : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         targetRotation = Vector3.Lerp(targetRotation, Vector3.zero, returnSpeed * Time.deltaTime);
     
@@ -31,7 +31,7 @@ public class Recoil : MonoBehaviour
         //transform.localRotation = Quaternion.Euler(currentRotation);
     }
 
-    public void RecoilFire()
+    public void FireCameraRecoil()
     {
         targetRotation += new Vector3(recoilX, Random.Range(-recoilY, recoilY), 0);
     }
