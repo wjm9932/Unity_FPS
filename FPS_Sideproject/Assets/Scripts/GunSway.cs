@@ -26,7 +26,6 @@ public class GunSway : MonoBehaviour
     public float aimMaxTiltAmount = 5f;
 
     private float tiltAmount;
-    private float tiltMaxAmount;
 
     public float smoothRotation = 12f;
 
@@ -80,6 +79,7 @@ public class GunSway : MonoBehaviour
         GetMouseValue();
         GetBobOffest();
         GetBobRotation();
+
         UpdateSway();
         UpdateTiltSway();
     }
@@ -137,7 +137,6 @@ public class GunSway : MonoBehaviour
             swayMaxAmount = aimSwayMaxAmount;
 
             tiltAmount = aimTiltAmount;
-            tiltMaxAmount = aimTiltAmount;
 
             travelLimit = aimTravelLimit;
             bobLimit = aimBobLimit;
@@ -151,7 +150,6 @@ public class GunSway : MonoBehaviour
 
 
             tiltAmount = idleTiltAmount;
-            tiltMaxAmount = idleTiltAmount;
 
             travelLimit = idleTravelLimit;
             bobLimit = idleBobLimit;
