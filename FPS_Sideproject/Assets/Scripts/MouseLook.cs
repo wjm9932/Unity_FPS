@@ -23,8 +23,8 @@ public class MouseLook : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float mouseX = input.mouseInput.x * mouseSensitivity * 10 * Time.deltaTime;
-        float mouseY = input.mouseInput.y * mouseSensitivity * 10 * Time.deltaTime;
+        float mouseX = input.mouseInput.x * mouseSensitivity;
+        float mouseY = input.mouseInput.y * mouseSensitivity;
 
         xRotation -= mouseY;
 

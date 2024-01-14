@@ -2050,7 +2050,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recoil: {fileID: 1584365856}
-  mouseSensitivity: 20
+  mouseSensitivity: 2
   playerBody: {fileID: 790513420}
   rotateBody: {fileID: 963194228}
 --- !u!4 &830458563 stripped
