@@ -25,10 +25,10 @@ public class EffectManager : MonoBehaviour
     {
         var targetPrefab = commonHitEffectPrefab;
 
-        //if (effectType == EffectType.Flesh)
-        //{
-        //    targetPrefab = fleshHitEffectPrefab;
-        //}
+        if (effectType == EffectType.Flesh)
+        {
+            targetPrefab = fleshHitEffectPrefab;
+        }
 
         var effect = Instantiate(targetPrefab, pos, Quaternion.LookRotation(normal));
 

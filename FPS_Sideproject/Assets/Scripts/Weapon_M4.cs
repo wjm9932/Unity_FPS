@@ -17,9 +17,6 @@ public class Weapon_M4 : MonoBehaviour
     public ParticleSystem muzzleFlashEffect;
     public ParticleSystem shellEjectEffect;
 
-    //temp
-    public GameObject temp;
-
     public Camera cam;
     public Transform firePos;
     public RaycastHit rayHit;
@@ -72,7 +69,7 @@ public class Weapon_M4 : MonoBehaviour
         isReadyToShoot = false;
         --bulletSLeft;
 
-        if(Physics.Raycast(cam.transform.position, cam.transform.forward, out rayHit, range, whatIsEnemy) == true)
+        if(Physics.Raycast(firePos.transform.position, firePos.transform.forward, out rayHit, range, whatIsEnemy) == true)
         {
             var target = rayHit.collider.GetComponent<IDamageble>();
             if (target != null)
