@@ -3706,7 +3706,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   magazineSize: 1000
-  timeBetweenShooting: 0.075
+  timeBetweenShooting: 0.05
   spread: 0
   range: 100
   reloadTime: 0

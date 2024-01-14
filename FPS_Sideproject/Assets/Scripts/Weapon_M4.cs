@@ -42,7 +42,11 @@ public class Weapon_M4 : MonoBehaviour
         {
             Reload();
         }
-        if(input.isFiring == true && isReadyToShoot == true && !isReloading && bulletSLeft > 0)
+        
+    }
+    private void FixedUpdate()
+    {
+        if (input.isFiring == true && isReadyToShoot == true && !isReloading && bulletSLeft > 0)
         {
             Shoot();
         }
