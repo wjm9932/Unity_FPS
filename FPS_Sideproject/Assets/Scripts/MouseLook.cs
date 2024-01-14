@@ -7,7 +7,7 @@ public class MouseLook : MonoBehaviour
     public Recoil recoil;
 
 
-    public float mouseSensitivity = 100f;
+    public float mouseSensitivity;
     public Transform playerBody;
     public Transform rotateBody;
 

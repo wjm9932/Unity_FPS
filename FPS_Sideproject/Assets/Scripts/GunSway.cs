@@ -86,8 +86,8 @@ public class GunSway : MonoBehaviour
 
     private void GetMouseValue()
     {
-        xMouse = -Input.GetAxis("Mouse X");
-        yMouse = -Input.GetAxis("Mouse Y");
+        xMouse = -Input.GetAxis("Mouse X") * 0.2f;
+        yMouse = -Input.GetAxis("Mouse Y") * 0.2f;
     }
     private void UpdateSway()
     {
