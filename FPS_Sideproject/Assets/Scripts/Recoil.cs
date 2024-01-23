@@ -24,11 +24,9 @@ public class Recoil : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        targetRotation = Vector3.Lerp(targetRotation, Vector3.zero, returnSpeed * Time.deltaTime);
+        targetRotation = Vector3.Lerp(targetRotation, Vector3.zero, returnSpeed * Time.fixedDeltaTime);
     
         currentRotation = Vector3.Slerp(currentRotation, targetRotation, snappiness * Time.fixedDeltaTime);
-        
-        //transform.localRotation = Quaternion.Euler(currentRotation);
     }
 
     public void FireCameraRecoil()
