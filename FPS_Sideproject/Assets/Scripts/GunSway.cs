@@ -77,8 +77,9 @@ public class GunSway : MonoBehaviour
         SetValue();
 
         GetMouseValue();
-        GetBobOffest();
+
         GetBobRotation();
+        GetBobOffest();
 
         UpdateSway();
         UpdateTiltSway();
@@ -95,6 +96,7 @@ public class GunSway : MonoBehaviour
         float moveY = Mathf.Clamp(yMouse * swayAmount, -swayMaxAmount, swayMaxAmount);
 
         Vector3 finalPosition = new Vector3(moveX, moveY, 0);
+        // use lerp because adjust position not rotation
         transform.localPosition = Vector3.Lerp(transform.localPosition, finalPosition + originPosition + bobPosition, Time.deltaTime * smooth);
     }
     private void UpdateTiltSway()
@@ -103,12 +105,20 @@ public class GunSway : MonoBehaviour
         float tiltY = Mathf.Clamp(yMouse * tiltAmount, -tiltAmount, tiltAmount);
 
         Quaternion targetRotation = Quaternion.Euler(new Vector3(rotationX ? -tiltY : 0f, rotationY ? tiltX : 0f, rotationZ ? tiltX : 0f));
-        transform.localRotation = Quaternion.Lerp(transform.localRotation, originRotation * targetRotation * Quaternion.Euler(bobRotation), Time.deltaTime * smoothRotation);
+        // use slerp because adjust rotation not position
+        transform.localRotation = Quaternion.Slerp(transform.localRotation, originRotation * targetRotation * Quaternion.Euler(bobRotation), Time.deltaTime * smoothRotation);
     }
 
     private void GetBobOffest()
     {
-        if(input.moveInput != Vector2.zero)
+        bobPosition.x = (curveCos * bobLimit.x * (controller.isGrounded ? 1 : 0)) - (input.moveInput.x * travelLimit.x);
+        bobPosition.y = (curveSin * bobLimit.y) - (controller.velocity.y * travelLimit.y);
+        bobPosition.z = -(input.moveInput.y * travelLimit.z);
+    }
+
+    private void GetBobRotation()
+    {
+        if (input.moveInput != Vector2.zero)
         {
             speedCurve += Time.deltaTime * (controller.isGrounded ? bobbingSpeedForWalking : 1f);
         }
@@ -117,13 +127,6 @@ public class GunSway : MonoBehaviour
             speedCurve += Time.deltaTime * (controller.isGrounded ? bobbingSpeedForStanding : 1f);
         }
 
-        bobPosition.x = (curveCos * bobLimit.x * (controller.isGrounded ? 1 : 0))- (input.moveInput.x * travelLimit.x);
-        bobPosition.y = (curveSin * bobLimit.y) - (controller.velocity.y * travelLimit.y);
-        bobPosition.z = -(input.moveInput.y * travelLimit.z);
-    }
-
-    private void GetBobRotation()
-    {
         bobRotation.x = (input.moveInput != Vector2.zero ? bobAmount.x * (Mathf.Sin(2 * speedCurve)) : bobAmount.x * (Mathf.Sin(2 * speedCurve) /5));
         bobRotation.y = (input.moveInput != Vector2.zero ? bobAmount.y * curveCos : 0);
         bobRotation.z = (input.moveInput != Vector2.zero ? bobAmount.z * curveCos * input.moveInput.x : 0);
