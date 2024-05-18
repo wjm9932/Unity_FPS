@@ -8,6 +8,7 @@ public class PlayerInput : MonoBehaviour
     public Vector2 mouseInput { get; private set; }
     public bool isJumping { get; private set; }
     public bool isFiring { get; private set; }
+    public bool isFiringEnd { get; private set; }
     public bool isAiming { get; private set; }
     public bool isReload { get; private set; }
     //public bool isReload { get; private set; }
@@ -29,6 +30,7 @@ public class PlayerInput : MonoBehaviour
         }
         isJumping = Input.GetButtonDown("Jump");
         isFiring = Input.GetButton("Fire1");
+        isFiringEnd = Input.GetButtonUp("Fire1");
         isAiming = Input.GetButton("Fire2");
         isReload = Input.GetButtonDown("Reload");
     }

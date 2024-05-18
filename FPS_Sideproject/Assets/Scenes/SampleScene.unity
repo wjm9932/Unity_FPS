@@ -3836,10 +3836,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aeb3e3e7caed83b4eb62e21451f489b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recoilX: -10
+  recoilX: -5
   recoilY: 2.5
   recoilZ: 0
-  snappiness: 6
+  snappiness: 50
   returnSpeed: 10
 --- !u!114 &1584365857
 MonoBehaviour:
