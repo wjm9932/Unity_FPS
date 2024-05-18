@@ -3837,9 +3837,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recoilX: -5
-  recoilY: 2.5
+  recoilY: 1
   recoilZ: 0
-  snappiness: 50
+  snappiness: 13
   returnSpeed: 10
 --- !u!114 &1584365857
 MonoBehaviour:
