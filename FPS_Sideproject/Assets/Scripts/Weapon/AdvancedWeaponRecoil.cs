@@ -45,8 +45,8 @@ public class AdvancedWeaponRecoil : MonoBehaviour
         positionalRecoil = Vector3.Lerp(positionalRecoil, originPosition, positionalReturnSpeed * Time.deltaTime);
         rotationalRecoil = Vector3.Slerp(rotationalRecoil, originRotation, rotationalReturnSpeed * Time.deltaTime);
 
-        recoilTransform.localPosition = Vector3.Lerp(recoilTransform.localPosition, positionalRecoil, positionalRecoilSpeed * Time.fixedDeltaTime);
-        rotation = Vector3.Slerp(rotation, rotationalRecoil, rotationalRecoilSpeed* Time.fixedDeltaTime);
+        recoilTransform.localPosition = Vector3.Lerp(recoilTransform.localPosition, positionalRecoil, positionalRecoilSpeed * Time.deltaTime);
+        rotation = Vector3.Slerp(rotation, rotationalRecoil, rotationalRecoilSpeed* Time.deltaTime);
         recoilTransform.localRotation = Quaternion.Euler(rotation);
     }
 

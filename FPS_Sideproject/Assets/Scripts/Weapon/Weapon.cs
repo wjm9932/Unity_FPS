@@ -5,7 +5,7 @@ public class Weapon : MonoBehaviour
 {
     public int damage;
     public int magazineSize;
-    public float timeBetweenShooting, spread, range, reloadTime, timeBetweenShots;
+    public float timeBetweenShooting, range, reloadTime;
 
     private int bulletSLeft, bulletsShot;
     private bool isShooting, isReadyToShoot, isReloading;
