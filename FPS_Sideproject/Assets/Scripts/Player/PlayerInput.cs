@@ -28,10 +28,10 @@ public class PlayerInput : MonoBehaviour
         {
             moveInput = moveInput.normalized;
         }
-        isJumping = Input.GetButtonDown("Jump");
-        isFiring = Input.GetButton("Fire1");
-        isFiringEnd = Input.GetButtonUp("Fire1");
-        isAiming = Input.GetButton("Fire2");
+        isJumping = Input.GetButtonDown("Fire1");
+        isFiring = Input.GetButton("Fire2");
+        isFiringEnd = Input.GetButtonUp("Fire2");
+        isAiming = Input.GetButton("Jump");
         isReload = Input.GetButtonDown("Reload");
     }
 }

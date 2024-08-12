@@ -5,8 +5,7 @@ using UnityEngine;
 public class AdvancedWeaponRecoil : MonoBehaviour
 {
     [Header("Reference Points")]
-    public Transform recoilPosition;
-    public Transform rotationPoint;
+    public Transform recoilTransform;
 
     [Header("Speed")]
     public float positionalRecoilSpeed = 8f;
@@ -19,9 +18,9 @@ public class AdvancedWeaponRecoil : MonoBehaviour
     [Header("Amount Setting")]
     public Vector3 recoilRotation = new Vector3(10f, 5f, 7f);
     public Vector3 recoilKickBack = new Vector3(0.015f, 0f, -0.2f);
-    [Space()]
-    public Vector3 recoilRotationAim = new Vector3(10f, 5f, 7f);
-    public Vector3 recoilKickBackAim = new Vector3(0.015f, 0f, -0.2f);
+    //[Space()]
+    //public Vector3 recoilRotationAim = new Vector3(10f, 5f, 7f);
+    //public Vector3 recoilKickBackAim = new Vector3(0.015f, 0f, -0.2f);
 
     [Space()]
     Vector3 rotationalRecoil;
@@ -36,24 +35,24 @@ public class AdvancedWeaponRecoil : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        originPosition = recoilPosition.localPosition;
-        originRotation = rotationPoint.localPosition;
+        originPosition = recoilTransform.localPosition;
+        originRotation = recoilTransform.localPosition;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        rotationalRecoil = Vector3.Lerp(rotationalRecoil, originRotation, rotationalReturnSpeed * Time.deltaTime);
         positionalRecoil = Vector3.Lerp(positionalRecoil, originPosition, positionalReturnSpeed * Time.deltaTime);
+        rotationalRecoil = Vector3.Slerp(rotationalRecoil, originRotation, rotationalReturnSpeed * Time.deltaTime);
 
-        recoilPosition.localPosition = Vector3.Slerp(recoilPosition.localPosition, positionalRecoil, positionalRecoilSpeed * Time.fixedDeltaTime);
+        recoilTransform.localPosition = Vector3.Lerp(recoilTransform.localPosition, positionalRecoil, positionalRecoilSpeed * Time.fixedDeltaTime);
         rotation = Vector3.Slerp(rotation, rotationalRecoil, rotationalRecoilSpeed* Time.fixedDeltaTime);
-        rotationPoint.localRotation = Quaternion.Euler(rotation);
+        recoilTransform.localRotation = Quaternion.Euler(rotation);
     }
 
     public void FireWeaponRecoil()
     {
-        rotationalRecoil += new Vector3(-recoilRotation.x, Random.Range(-recoilRotation.y, recoilRotation.y), Random.Range(-recoilRotation.z, recoilRotation.z));
         positionalRecoil += new Vector3(Random.Range(-recoilKickBack.x, recoilKickBack.x), Random.Range(-recoilKickBack.y, recoilKickBack.y), recoilKickBack.z);
+        rotationalRecoil += new Vector3(-recoilRotation.x, Random.Range(-recoilRotation.y, recoilRotation.y), Random.Range(-recoilRotation.z, recoilRotation.z));
     }
 }
