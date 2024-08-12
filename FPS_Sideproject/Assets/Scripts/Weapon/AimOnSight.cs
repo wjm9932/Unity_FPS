@@ -7,7 +7,7 @@ public class AimOnSight : MonoBehaviour
     public Transform weaponPosition;
 
     [Header("Aimmig")]
-    public Vector3 aimPosition;
+    public Transform aim;
     public float adsSpeed = 8f;
 
     private Vector3 originalPosition;
@@ -30,7 +30,7 @@ public class AimOnSight : MonoBehaviour
     {
         if(input.isAiming == true)
         {
-            weaponPosition.localPosition = Vector3.Lerp(weaponPosition.localPosition, aimPosition, Time.deltaTime * adsSpeed);
+            weaponPosition.localPosition = Vector3.Lerp(weaponPosition.localPosition, aim.localPosition, Time.deltaTime * adsSpeed);
         }
         else
         {

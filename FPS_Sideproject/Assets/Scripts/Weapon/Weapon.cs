@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngineInternal;
 
-public class Weapon_M4 : MonoBehaviour
+public class Weapon : MonoBehaviour
 {
     public int damage;
     public int magazineSize;
@@ -17,7 +17,6 @@ public class Weapon_M4 : MonoBehaviour
     public ParticleSystem muzzleFlashEffect;
     public ParticleSystem shellEjectEffect;
 
-    public Camera cam;
     public Transform firePos;
     public RaycastHit rayHit;
     public LayerMask whatIsEnemy;
