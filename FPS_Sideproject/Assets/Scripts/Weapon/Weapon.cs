@@ -11,6 +11,7 @@ public class Weapon : MonoBehaviour
     private bool isShooting, isReadyToShoot, isReloading;
 
     private PlayerInput input;
+
     private Recoil recoil;
     private AdvancedWeaponRecoil advancedWeaponRecoil;
 

@@ -6,6 +6,7 @@ public class GunSway : MonoBehaviour
 {
     public CharacterController controller;
     private PlayerInput input;
+
     [Header("Sway")]
     public float idleSwayAmount = 0.02f;
     public float idleSwayMaxAmount = 0.06f;
@@ -79,7 +80,7 @@ public class GunSway : MonoBehaviour
         GetMouseValue();
 
         GetBobRotation();
-        GetBobOffest();
+        GetBobPosition();
 
         UpdateSway();
         UpdateTiltSway();
@@ -109,7 +110,7 @@ public class GunSway : MonoBehaviour
         transform.localRotation = Quaternion.Slerp(transform.localRotation, originRotation * targetRotation * Quaternion.Euler(bobRotation), Time.deltaTime * smoothRotation);
     }
 
-    private void GetBobOffest()
+    private void GetBobPosition()
     {
         bobPosition.x = (curveCos * bobLimit.x * (controller.isGrounded ? 1 : 0)) - (input.moveInput.x * travelLimit.x);
         bobPosition.y = (curveSin * bobLimit.y) - (controller.velocity.y * travelLimit.y);
