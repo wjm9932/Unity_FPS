@@ -25,8 +25,7 @@ public abstract class ScreenRecoil : MonoBehaviour
     // Update is called once per frame
     protected virtual void FixedUpdate()
     {
-
-        //targetRotation = Vector3.Slerp(targetRotation, Vector3.zero, returnSpeed * Time.fixedDeltaTime);
+        targetRotation = Vector3.Slerp(targetRotation, Vector3.zero, 7f * Time.fixedDeltaTime);
 
         currentRotation = Vector3.Slerp(currentRotation, targetRotation, snappiness * Time.fixedDeltaTime);
     }

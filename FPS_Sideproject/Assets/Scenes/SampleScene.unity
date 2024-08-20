@@ -882,7 +882,7 @@ PrefabInstance:
       objectReference: {fileID: 734824392}
     - target: {fileID: 1584365861, guid: cc4156adf6614cb4693b57fd602cf0b9, type: 3}
       propertyPath: recoilX
-      value: -5
+      value: -15
       objectReference: {fileID: 0}
     - target: {fileID: 2349258150479485684, guid: cc4156adf6614cb4693b57fd602cf0b9, type: 3}
       propertyPath: m_RootOrder

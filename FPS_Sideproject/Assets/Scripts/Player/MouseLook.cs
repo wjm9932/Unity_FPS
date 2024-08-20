@@ -40,14 +40,25 @@ public class MouseLook : MonoBehaviour
 
         Vector3 finalRotation = new Vector3(xRotation, 0f, 0f) + recoil.currentRotation;
         finalRotation.x = Mathf.Clamp(finalRotation.x, -90f, 90f);
+        //Debug.Log("Angle: " + finalRotation.x);
 
         if (input.isFiring == true)
         {
+            test = true;
             rotateBody.transform.localRotation = Quaternion.Slerp(rotateBody.transform.localRotation, Quaternion.Euler(finalRotation.x, finalRotation.y, 0f), Time.deltaTime * 50f);
         }
         else
         {
+            if(test == true)
+            {
+                test = false;
+                finalRotation.x = rotateBody.transform.localRotation.eulerAngles.x;
+                finalRotation.x = Mathf.Clamp(finalRotation.x, -90f, 90f);
+                xRotation = finalRotation.x;
+                recoil.currentRotation = Vector3.zero;
+            }
             rotateBody.transform.localRotation = Quaternion.Euler(finalRotation.x, finalRotation.y, 0f);
+
         }
 
         playerBody.Rotate(Vector3.up * mouseX);
