@@ -4,7 +4,8 @@ public abstract class ScreenRecoil : MonoBehaviour
 {
     //Rotation
     public Vector3 currentRotation { get;  set; }
-    protected Vector3 targetRotation;
+    public Vector3 targetRotation;
+    public Vector3 lastRecoil;
     private PlayerInput input;
 
     [Header("HipFire")]

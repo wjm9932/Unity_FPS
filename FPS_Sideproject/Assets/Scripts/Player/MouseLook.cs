@@ -52,10 +52,11 @@ public class MouseLook : MonoBehaviour
             if(test == true)
             {
                 test = false;
-                finalRotation.x = rotateBody.transform.localRotation.eulerAngles.x;
+                finalRotation = rotateBody.transform.localRotation.eulerAngles - (recoil.targetRotation - recoil.currentRotation);
                 finalRotation.x = Mathf.Clamp(finalRotation.x, -90f, 90f);
                 xRotation = finalRotation.x;
-                recoil.currentRotation = Vector3.zero;
+                recoil.currentRotation = recoil.targetRotation - recoil.currentRotation;
+                recoil.targetRotation = recoil.targetRotation - recoil.currentRotation;
             }
             rotateBody.transform.localRotation = Quaternion.Euler(finalRotation.x, finalRotation.y, 0f);
 

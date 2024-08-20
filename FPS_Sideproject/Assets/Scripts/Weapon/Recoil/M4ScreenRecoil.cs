@@ -17,6 +17,8 @@ public class M4ScreenRecoil : ScreenRecoil
 
     public override void FireCameraRecoil()
     {
-        targetRotation += new Vector3(recoilX, Random.Range(-recoilY, recoilY), 0);
+        lastRecoil = new Vector3(recoilX, Random.Range(-recoilY, recoilY), 0);
+        targetRotation += lastRecoil;
+        lastRecoil = targetRotation - currentRotation;
     }
 }
