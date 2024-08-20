@@ -12,8 +12,8 @@ public class Weapon : MonoBehaviour
 
     private PlayerInput input;
 
-    private Recoil recoil;
-    private AdvancedWeaponRecoil advancedWeaponRecoil;
+    private ScreenRecoil recoil;
+    private WeaponRecoil advancedWeaponRecoil;
 
     public ParticleSystem muzzleFlashEffect;
     public ParticleSystem shellEjectEffect;
@@ -25,8 +25,8 @@ public class Weapon : MonoBehaviour
     void Start()
     {
         input = transform.root.gameObject.GetComponent<PlayerInput>();
-        advancedWeaponRecoil = GetComponent<AdvancedWeaponRecoil>();
-        recoil = GetComponent<Recoil>();
+        advancedWeaponRecoil = GetComponent<WeaponRecoil>();
+        recoil = GetComponent<ScreenRecoil>();
 
         bulletSLeft = magazineSize;
         isReadyToShoot = true;

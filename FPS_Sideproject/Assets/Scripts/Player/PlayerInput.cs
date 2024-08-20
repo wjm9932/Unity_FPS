@@ -23,7 +23,6 @@ public class PlayerInput : MonoBehaviour
 
         moveInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         mouseInput = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
-                                 
         if (moveInput.sqrMagnitude > 1f)
         {
             moveInput = moveInput.normalized;

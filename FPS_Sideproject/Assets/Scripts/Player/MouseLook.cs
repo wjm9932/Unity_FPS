@@ -4,20 +4,30 @@ using UnityEngine;
 
 public class MouseLook : MonoBehaviour
 {
-    public Recoil recoil;
-
-
-    public float mouseSensitivity;
     public Transform playerBody;
     public Transform rotateBody;
+    public float mouseSensitivity;
 
     private PlayerInput input;
+    private ScreenRecoil recoil;
     private float xRotation = 0f;
+
+    private bool test = false;
     // Start is called before the first frame update
     void Start()
     {
         input = GetComponent<PlayerInput>();
         Cursor.lockState = CursorLockMode.Locked;
+
+        GameObject gunObject = GameObject.FindWithTag("Gun");
+        if (gunObject != null)
+        {
+            recoil = gunObject.GetComponent<ScreenRecoil>();
+        }
+        else
+        {
+            Debug.LogError("Gun with tag 'gun' not found or it doesn't have a ScreenRecoil component!");
+        }
     }
 
     // Update is called once per frame
@@ -33,12 +43,13 @@ public class MouseLook : MonoBehaviour
 
         if (input.isFiring == true)
         {
-            rotateBody.transform.localRotation = Quaternion.Lerp(rotateBody.transform.localRotation, Quaternion.Euler(finalRotation.x, finalRotation.y, 0f), Time.deltaTime * 50f);
+            rotateBody.transform.localRotation = Quaternion.Slerp(rotateBody.transform.localRotation, Quaternion.Euler(finalRotation.x, finalRotation.y, 0f), Time.deltaTime * 50f);
         }
         else
         {
             rotateBody.transform.localRotation = Quaternion.Euler(finalRotation.x, finalRotation.y, 0f);
         }
+
         playerBody.Rotate(Vector3.up * mouseX);
     }
 }
