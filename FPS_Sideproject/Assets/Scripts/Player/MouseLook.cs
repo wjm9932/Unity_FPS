@@ -14,11 +14,8 @@ public class MouseLook : MonoBehaviour
 
     private bool test = false;
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        input = GetComponent<PlayerInput>();
-        Cursor.lockState = CursorLockMode.Locked;
-
         GameObject gunObject = GameObject.FindWithTag("Gun");
         if (gunObject != null)
         {
@@ -28,6 +25,12 @@ public class MouseLook : MonoBehaviour
         {
             Debug.LogError("Gun with tag 'gun' not found or it doesn't have a ScreenRecoil component!");
         }
+    }
+
+    void Start()
+    {
+        input = GetComponent<PlayerInput>();
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame

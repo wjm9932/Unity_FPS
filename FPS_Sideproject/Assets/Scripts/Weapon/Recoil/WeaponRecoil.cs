@@ -4,11 +4,10 @@ using UnityEngine;
 
 public abstract class WeaponRecoil : MonoBehaviour
 {
-
     [Header("Speed")]
     [SerializeField] protected float positionalRecoilSpeed = 8f;
     [SerializeField] protected float rotationalRecoilSpeed = 8f;
-    
+
     [Space()]
     [SerializeField] protected float positionalReturnSpeed = 18f;
     [SerializeField] protected float rotationalReturnSpeed = 38f;
@@ -21,7 +20,7 @@ public abstract class WeaponRecoil : MonoBehaviour
     protected Vector3 positionalRecoil;
     protected Vector3 rotation;
     protected Vector3 originPosition;
-    protected Vector3 originRotation;
+    protected Quaternion originRotation;  // Change to Quaternion
 
     private Transform recoilTransform;
 
@@ -29,23 +28,22 @@ public abstract class WeaponRecoil : MonoBehaviour
     {
         recoilTransform = gameObject.transform.parent;
     }
-    // Start is called before the first frame update
+
     protected virtual void Start()
     {
         originPosition = recoilTransform.localPosition;
-        originRotation = recoilTransform.localPosition;
+        originRotation = recoilTransform.localRotation;  // Store as Quaternion
     }
 
-    // Update is called once per frame
     protected virtual void FixedUpdate()
     {
         positionalRecoil = Vector3.Lerp(positionalRecoil, originPosition, positionalReturnSpeed * Time.deltaTime);
-        rotationalRecoil = Vector3.Slerp(rotationalRecoil, originRotation, rotationalReturnSpeed * Time.deltaTime);
+        rotationalRecoil = Vector3.Slerp(rotationalRecoil, originRotation.eulerAngles, rotationalReturnSpeed * Time.deltaTime);  // Use eulerAngles for Vector3
 
         recoilTransform.localPosition = Vector3.Lerp(recoilTransform.localPosition, positionalRecoil, positionalRecoilSpeed * Time.deltaTime);
-        
-        rotation = Vector3.Slerp(rotation, rotationalRecoil, rotationalRecoilSpeed* Time.deltaTime);
-        recoilTransform.localRotation = Quaternion.Euler(rotation);
+
+        rotation = Vector3.Slerp(rotation, rotationalRecoil, rotationalRecoilSpeed * Time.deltaTime);
+        recoilTransform.localRotation = Quaternion.Euler(rotation);  // Convert Vector3 to Quaternion
     }
 
     public abstract void FireWeaponRecoil();
