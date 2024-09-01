@@ -7,10 +7,10 @@ public class Weapon : MonoBehaviour
     public int magazineSize;
     public float timeBetweenShooting, range, reloadTime;
 
-    private int bulletSLeft, bulletsShot;
-    private bool isShooting, isReadyToShoot, isReloading;
+    public int bulletSLeft { get; private set; }
+    public bool isReadyToShoot { get; private set; }
+    public bool isReloading { get; private set; }
 
-    private PlayerInput input;
 
     private ScreenRecoil recoil;
     private WeaponRecoil advancedWeaponRecoil;
@@ -24,7 +24,6 @@ public class Weapon : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        input = transform.root.gameObject.GetComponent<PlayerInput>();
         advancedWeaponRecoil = GetComponent<WeaponRecoil>();
         recoil = GetComponent<ScreenRecoil>();
 
@@ -32,33 +31,21 @@ public class Weapon : MonoBehaviour
         isReadyToShoot = true;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Reload()
     {
-        if(input.isReload == true && isReloading == false)
-        {
-            Reload();
-        }
-        
-    }
-    private void FixedUpdate()
-    {
-        if (input.isFiring == true && isReadyToShoot == true && !isReloading && bulletSLeft > 0)
-        {
-            Shoot();
-        }
-    }
-    private void Reload()
-    {
+        Debug.Log("Reload Start");
+
         isReloading = true;
         Invoke("ReloadFinished", reloadTime);
     }
     private void ReloadFinished()
     {
+        Debug.Log("Reload Finished");
+
         bulletSLeft = magazineSize;
         isReloading = false;
     }
-    private void Shoot()
+    public void Shoot()
     {
         muzzleFlashEffect.Play();
         shellEjectEffect.Play();

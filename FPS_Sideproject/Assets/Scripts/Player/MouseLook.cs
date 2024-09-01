@@ -42,6 +42,7 @@ public class MouseLook : MonoBehaviour
         xRotation -= mouseY;
 
         Vector3 finalRotation = new Vector3(xRotation, 0f, 0f) + recoil.currentRotation;
+
         finalRotation.x = Mathf.Clamp(finalRotation.x, -90f, 90f);
 
         if (input.isFiring == true)
