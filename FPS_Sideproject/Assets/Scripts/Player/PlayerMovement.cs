@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
         playerController = GetComponent<CharacterController>();
         input = GetComponent<PlayerInput>();
     }
-    
+
     // Update is called once per frame
     void Update()
     {
@@ -33,20 +33,20 @@ public class PlayerMovement : MonoBehaviour
     private void Move()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-        if(isGrounded == true && velocity.y < 0)
+        if (isGrounded == true && velocity.y < 0)
         {
             velocity.y = -2f;
         }
 
 
-        Vector3 moveDir = transform.forward * input.moveInput.y + transform.right * input.moveInput.x;   
+        Vector3 moveDir = transform.forward * input.moveInput.y + transform.right * input.moveInput.x;
         playerController.Move(moveDir * Speed * Time.deltaTime);
 
-        if(input.isJumping == true && isGrounded == true)
+        if (input.isJumping == true && isGrounded == true)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
         velocity.y += gravity * Time.deltaTime;
-        playerController.Move(velocity*Time.deltaTime);
+        playerController.Move(velocity * Time.deltaTime);
     }
 }
