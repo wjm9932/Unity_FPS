@@ -5,6 +5,8 @@ using UnityEngine.Windows;
 
 public class PlayerShooter : MonoBehaviour
 {
+    private Animator animator;
+    
     private PlayerInput input;
     private Weapon gun;
     private void Awake()
@@ -14,6 +16,7 @@ public class PlayerShooter : MonoBehaviour
         {
             Debug.LogError("Gun with tag 'gun' not found");
         }
+        animator = GetComponent<Animator>();
     }
     // Start is called before the first frame update
     void Start()
@@ -36,5 +39,17 @@ public class PlayerShooter : MonoBehaviour
         {
             gun.Shoot();
         }
+    }
+
+    private void OnAnimatorIK()
+    {
+        animator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 1.0f);
+        animator.SetIKRotationWeight(AvatarIKGoal.RightHand, 1.0f);
+        animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 1.0f);
+
+
+        animator.SetIKPosition(AvatarIKGoal.LeftHand, gun.leftHandMount.position);
+        animator.SetIKPosition(AvatarIKGoal.RightHand, gun.rightHandMount.position);
+        animator.SetIKRotation(AvatarIKGoal.RightHand, gun.rightHandMount.rotation);
     }
 }

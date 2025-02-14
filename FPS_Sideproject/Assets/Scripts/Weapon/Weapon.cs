@@ -15,8 +15,11 @@ public class Weapon : MonoBehaviour
     private ScreenRecoil recoil;
     private WeaponRecoil advancedWeaponRecoil;
 
-    public ParticleSystem muzzleFlashEffect;
-    public ParticleSystem shellEjectEffect;
+    [SerializeField] private ParticleSystem muzzleFlashEffect;
+    [SerializeField] private ParticleSystem shellEjectEffect;
+
+    public Transform leftHandMount;
+    public Transform rightHandMount;
 
     public Transform firePos;
     public RaycastHit rayHit;

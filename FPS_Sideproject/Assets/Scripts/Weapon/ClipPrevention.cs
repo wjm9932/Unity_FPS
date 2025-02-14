@@ -28,10 +28,21 @@ public class ClipPrevention : MonoBehaviour
         else
         {
             lerpPos = Mathf.Lerp(lerpPos, 0f, 10f * Time.deltaTime);
-
         }
 
         Mathf.Clamp01(lerpPos);
         transform.localRotation = Quaternion.Slerp(Quaternion.Euler(Vector3.zero), Quaternion.Euler(newDirection), lerpPos);
+    }
+
+    void OnDrawGizmos()
+    {
+        if (clipProjector == null)
+            return;
+
+        Gizmos.color = Color.red;
+        Vector3 start = clipProjector.transform.position;
+        Vector3 direction = clipProjector.transform.forward * checkDistance;
+        Gizmos.DrawLine(start, start + direction);
+        
     }
 }
