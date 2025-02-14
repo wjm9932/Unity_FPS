@@ -24,7 +24,6 @@ public class PlayerShooter : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(input.isReload);
         if (input.isReload == true && gun.isReloading == false)
         {
             gun.Reload();

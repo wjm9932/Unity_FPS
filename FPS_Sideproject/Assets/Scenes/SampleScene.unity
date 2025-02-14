@@ -1050,17 +1050,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 790513417}
   idleSwayAmount: 0.1
-  idleSwayMaxAmount: 0.2
-  aimSwayAmount: 0.05
-  aimSwayMaxAmount: 0.1
+  idleSwayMaxAmount: 0.5
+  aimSwayAmount: 0.1
+  aimSwayMaxAmount: 0.2
   smooth: 8
-  idleTiltAmount: 20
-  idleMaxTiltAmount: 20
-  aimTiltAmount: 8
-  aimMaxTiltAmount: 8
-  smoothRotation: 8
+  idleTiltAmount: 25
+  idleMaxTiltAmount: 25
+  aimTiltAmount: 15
+  aimMaxTiltAmount: 15
+  smoothRotation: 5
   rotationX: 1
-  rotationY: 0
+  rotationY: 1
   rotationZ: 1
   speedCurve: 0
   bobbingSpeedForWalking: 10
@@ -4203,7 +4203,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1974383559}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.015, z: -0.304}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4308,15 +4308,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1990392830}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.341, y: -0.2, z: 0.5}
+  m_LocalRotation: {x: -0, y: -0.009580117, z: -0, w: 0.9999541}
+  m_LocalPosition: {x: 0.194, y: -0.226, z: 0.827}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 365123235}
   m_Father: {fileID: 963194228}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -1.098, z: 0}
 --- !u!1 &1999213692
 GameObject:
   m_ObjectHideFlags: 0
@@ -4341,7 +4341,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1999213692}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.194, z: 0.35}
+  m_LocalPosition: {x: 0, y: -0.194, z: 0.335}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4757,6 +4757,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1974383560}
     m_Modifications:
+    - target: {fileID: 1030213239144337554, guid: 5c79211a91f40dc4e81ff41368e041d1, type: 3}
+      propertyPath: recoilX
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030213239144337554, guid: 5c79211a91f40dc4e81ff41368e041d1, type: 3}
+      propertyPath: recoilY
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030213239144337554, guid: 5c79211a91f40dc4e81ff41368e041d1, type: 3}
+      propertyPath: snappiness
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 1030213239144337556, guid: 5c79211a91f40dc4e81ff41368e041d1, type: 3}
       propertyPath: clipProjector
       value: 
@@ -4773,6 +4785,10 @@ PrefabInstance:
       propertyPath: reloadTime
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1030213239144337576, guid: 5c79211a91f40dc4e81ff41368e041d1, type: 3}
+      propertyPath: timeBetweenShooting
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 2710568841884258809, guid: 5c79211a91f40dc4e81ff41368e041d1, type: 3}
       propertyPath: m_Name
       value: M4
@@ -4787,11 +4803,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3374938488292019011, guid: 5c79211a91f40dc4e81ff41368e041d1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.019
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3374938488292019011, guid: 5c79211a91f40dc4e81ff41368e041d1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.047
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3374938488292019011, guid: 5c79211a91f40dc4e81ff41368e041d1, type: 3}
       propertyPath: m_LocalRotation.w

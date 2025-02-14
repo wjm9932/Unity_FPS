@@ -88,8 +88,8 @@ public class GunSway : MonoBehaviour
 
     private void GetMouseValue()
     {
-        xMouse = -input.mouseInput.x * 0.3f;
-        yMouse = -input.mouseInput.y * 0.3f;
+        xMouse = input.mouseInput.x * 0.3f;
+        yMouse = input.mouseInput.y * 0.3f;
     }
     private void UpdateSway()
     {
