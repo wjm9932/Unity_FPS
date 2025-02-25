@@ -4255,7 +4255,7 @@ MonoBehaviour:
   speedCurve: 0
   bobbingSpeedForWalking: 10
   bobbingSpeedForStanding: 1.5
-  idleTravelLimit: {x: 0.05, y: 0.01, z: 0.05}
+  idleTravelLimit: {x: 0.05, y: 0.01, z: 0.03}
   idleBobLimit: {x: 0.01, y: 0.01, z: 0}
   aimTravelLimit: {x: 0.007, y: 0.01, z: 0.025}
   aimBobLimit: {x: 0.0025, y: 0.0025, z: 0}
@@ -4343,7 +4343,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1030213239144337555, guid: 5c79211a91f40dc4e81ff41368e041d1, type: 3}
       propertyPath: recoilKickBack.x
-      value: 0.012
+      value: 0.005
       objectReference: {fileID: 0}
     - target: {fileID: 1030213239144337555, guid: 5c79211a91f40dc4e81ff41368e041d1, type: 3}
       propertyPath: recoilKickBack.y
@@ -4355,15 +4355,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1030213239144337555, guid: 5c79211a91f40dc4e81ff41368e041d1, type: 3}
       propertyPath: recoilRotation.x
-      value: 5
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 1030213239144337555, guid: 5c79211a91f40dc4e81ff41368e041d1, type: 3}
       propertyPath: recoilRotation.y
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1030213239144337555, guid: 5c79211a91f40dc4e81ff41368e041d1, type: 3}
       propertyPath: recoilRotation.z
-      value: 10
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 1030213239144337555, guid: 5c79211a91f40dc4e81ff41368e041d1, type: 3}
       propertyPath: rotationalRecoilSpeed
@@ -4403,7 +4403,7 @@ PrefabInstance:
       objectReference: {fileID: 406423136}
     - target: {fileID: 1030213239144337576, guid: 5c79211a91f40dc4e81ff41368e041d1, type: 3}
       propertyPath: timeBetweenShooting
-      value: 0.05
+      value: 0.06
       objectReference: {fileID: 0}
     - target: {fileID: 2710568841884258809, guid: 5c79211a91f40dc4e81ff41368e041d1, type: 3}
       propertyPath: m_Name
